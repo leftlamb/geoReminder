@@ -11,3 +11,11 @@ export function getPoints() {
     return list;
 }
 
+
+export function addPoints(lat, lng) {
+    console.log(lat, lng);
+    //let fire = fire.database().ref('points');
+    //fire.database().ref('point' + fire.child).set({
+        
+    //});
+}

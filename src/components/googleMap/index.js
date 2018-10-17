@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './style.css'
 
-import {getPoints} from './../../scripts/firebaseAPI';
+import {getPoints, addPoints} from './../../scripts/firebaseAPI';
  
 
 const AnyReactComponent = () => <div className="test"/>;
@@ -13,6 +13,7 @@ class SimpleMap extends Component {
     this.state={
       points: null,
     }
+    this.addPoints=addPoints.bind(this);
   };
   componentWillMount() {
     let firePoints = getPoints()
@@ -27,6 +28,10 @@ class SimpleMap extends Component {
     },
     zoom: 11
   };
+  _onClick = (x, y, lat, lng, event) => {
+    this.addPoints(lat, lng);
+    console.log(x, y, lat, lng, event)
+  }
  
   render() {
     console.log(this.state)
@@ -36,7 +41,9 @@ class SimpleMap extends Component {
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg" }}
           defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}>
+          defaultZoom={this.props.zoom}
+          onClick={this._onClick}
+          >
           {this.state.points.map(function(point){
             return (<AnyReactComponent
               lat={point[0]}
