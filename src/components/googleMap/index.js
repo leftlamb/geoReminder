@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import LocationMarker from './../locationMarker';
 import './style.css'
 
 import {getPoints /*addPoints*/} from './../../scripts/firebaseAPI';
@@ -12,6 +13,8 @@ class SimpleMap extends Component {
     super(props);
     this.state={
       points: null,
+      currentPoint: [null, null],
+      didMark: false,
     }
   };
   componentWillMount() {
@@ -22,6 +25,10 @@ class SimpleMap extends Component {
   }
   _onClick = (event) => {
     console.log(event.lat, event.lng, "Hadde det ikke vært litt slitsomt om alle punktene ble lagt til hver gang du trykket?")
+    this.setState({
+      didMark: true,
+      currentPoint: [event.lat, event.lng],
+    });
     //addPoints(event.lat, event.lng);
   }
   render() {
@@ -31,7 +38,7 @@ class SimpleMap extends Component {
       <div id="container" style={{ height: '100%', width: '100%' }}>
         <button
           onClick={this.props.onMarkerClick}
-          className="buttons">
+        className="buttons">
           Find Location
         </button>
         <GoogleMapReact
@@ -39,10 +46,17 @@ class SimpleMap extends Component {
           onClick={this._onClick}
           center={this.props.geoLocation}
           zoom={this.props.mapZoom}
-          >
+        >
+          { this.state.didMark &&
+            <LocationMarker
+              lat={this.state.currentPoint[0]}
+              lng={this.state.currentPoint[1]}
+            />
+          }
           <AnyReactComponent
             lat={this.props.geoLocation.lat}
-            lng={this.props.geoLocation.lng}/>
+            lng={this.props.geoLocation.lng}
+          />
         </GoogleMapReact>
       </div>
     );
