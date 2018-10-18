@@ -33,6 +33,9 @@ class SimpleMap extends Component {
   }
   render() {
     console.log(this.state)
+    for(let i in this.state.points) {
+      console.log(i)
+    }
     return (
       // Important! Always set the container height explicitly
       <div id="container" style={{ height: '100%', width: '100%' }}>
@@ -41,6 +44,9 @@ class SimpleMap extends Component {
         className="buttons">
           Find Location
         </button>
+        {this.state.points.map(point =>
+            console.log(point)
+          )}
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg" }}
           onClick={this._onClick}

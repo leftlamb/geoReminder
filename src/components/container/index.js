@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './style.css';
 import SimpleMap from '../googleMap';
+import PopUp from '../popUp';
 
 class Container extends Component {
   constructor(){
@@ -41,6 +42,8 @@ componentDidMount(){
                 mapZoom = {this.state.zoom}
                 // onMarkerClick = {this.getGeoLocation}
               />
+              <PopUp/>
+
             </div>
           </div>
       );

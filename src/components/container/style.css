@@ -1,11 +1,11 @@
 .container {
-    height: 90vh;
+    height: 200vh;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .mapContainer {
     height: 80vh;
     width: 70vw;
+    display: flex;
 }
