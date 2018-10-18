@@ -13,7 +13,9 @@ class Container extends Component {
       zoom: 15
     };
   }
-
+componentDidMount(){
+  this.getGeoLocation();
+}
 
   getGeoLocation = () => {
     if (navigator.geolocation) {
@@ -37,7 +39,7 @@ class Container extends Component {
               <SimpleMap
                 geoLocation= {this.state.center}
                 mapZoom = {this.state.zoom}
-                onMarkerClick = {this.getGeoLocation}
+                // onMarkerClick = {this.getGeoLocation}
               />
             </div>
           </div>
