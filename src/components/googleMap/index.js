@@ -8,7 +8,6 @@ const ReminderNotis = () => <div className="notis" />;
 
 class SimpleMap extends Component {
 
-  _onClick = ({x, y, lat, lng, event}) => console.log(x, y, lat, lng, event)
 
   render() {
     return (
@@ -24,8 +23,6 @@ class SimpleMap extends Component {
           bootstrapURLKeys={{ key: "AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg" }}
           center={this.props.geoLocation}
           zoom={this.props.mapZoom}
-          onClick={this._onClick}
-          
         >
 
           <AnyReactComponent

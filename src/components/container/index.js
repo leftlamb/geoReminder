@@ -14,7 +14,6 @@ class Container extends Component {
     };
   }
 
-  _onClick = ({x, y, lat, lng, event}) => console.log(x, y, lat, lng, event)
 
   getGeoLocation = () => {
     if (navigator.geolocation) {
