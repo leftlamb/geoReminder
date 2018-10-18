@@ -13,9 +13,9 @@ export function getPoints() {
 
 
 export function addPoints(lat, lng) {
-    console.log(lat, lng);
-    //let fire = fire.database().ref('points');
-    //fire.database().ref('point' + fire.child).set({
-        
-    //});
+    let firePoints = fire.database().ref('points');
+    firePoints.push().set({
+        0: lat,
+        1: lng
+    });
 }

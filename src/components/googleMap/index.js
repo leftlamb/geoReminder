@@ -6,7 +6,8 @@ import {getPoints, addPoints} from './../../scripts/firebaseAPI';
  
 
 const AnyReactComponent = () => <div className="test"/>;
- 
+
+
 class SimpleMap extends Component {
   constructor(props) {
     super(props);
@@ -28,9 +29,9 @@ class SimpleMap extends Component {
     },
     zoom: 11
   };
-  _onClick = (x, y, lat, lng, event) => {
-    this.addPoints(lat, lng);
-    console.log(x, y, lat, lng, event)
+  _onClick = (event) => {
+    console.log(event.lat, event.lng, "Hadde det ikke vært litt slitsomt om alle punktene ble lagt til hver gang du trykket?")
+    //addPoints(event.lat, event.lng);
   }
  
   render() {
