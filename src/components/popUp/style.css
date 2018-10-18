@@ -1,0 +1,35 @@
+.window {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  transition: 1s;
+}
+.prompt {
+  align-self: center;
+  padding: 10px 20px;
+  background-color: blue;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+.dialog {
+  width: inherit;
+  border: 2px solid grey;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  transition: 1s;
+  animation: create .5s;
+  height: 100px;
+}
+
+@keyframes create {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100px;
+  }
+}
