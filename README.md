@@ -12,3 +12,6 @@
 
 ## Notifications api
 [](https://notifications.spec.whatwg.org/)
+
+## Firebase
+[firebase api](https://www.npmjs.com/package/redux-firestore)
