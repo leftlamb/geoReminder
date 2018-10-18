@@ -17,33 +17,32 @@ class Container extends Component {
 
   getGeoLocation = () => {
     if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition((position) => {
-            this.setState({
-              center: {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-              },
-              zoom: 16
-            });
-          })
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.setState({
+            center: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            },
+            zoom: 16
+          });
+        })
   }else{
       console.log("error");
         }
-}
-
-    render() {
-        return (
-            <div className="container">
-              <div className="mapContainer">
-                <SimpleMap
-                  geoLocation= {this.state.center}
-                  mapZoom = {this.state.zoom}
-                  onMarkerClick = {this.getGeoLocation}
-                />
-              </div>
+  }
+  render() {
+      return (
+          <div className="container">
+            <div className="mapContainer">
+              <SimpleMap
+                geoLocation= {this.state.center}
+                mapZoom = {this.state.zoom}
+                onMarkerClick = {this.getGeoLocation}
+              />
             </div>
-        );
-    }
+          </div>
+      );
+  }
 }
 
 export default Container;
