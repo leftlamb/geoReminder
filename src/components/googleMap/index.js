@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './style.css'
 
-import {getPoints, addPoints} from './../../scripts/firebaseAPI';
+import {getPoints /*addPoints*/} from './../../scripts/firebaseAPI';
 
 const AnyReactComponent = () => <div className="test"/>;
 

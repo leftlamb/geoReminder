@@ -11,7 +11,6 @@ export function getPoints() {
     return list;
 }
 
-
 export function addPoints(lat, lng) {
     let firePoints = fire.database().ref('points');
     firePoints.push().set({
