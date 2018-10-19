@@ -26,7 +26,7 @@ class PopUp extends Component {
   submitted() {
     this.clicked();
     this.props.close();
-    return <SuccessPrompt/>
+    //return <SuccessPrompt/>
   }
   render() {
     return(

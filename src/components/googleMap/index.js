@@ -33,11 +33,22 @@ class SimpleMap extends Component {
       currentPoint: [event.lat, event.lng],
     });
   }
+  renderPoints() {
+    return this.state.points.map(point =>
+      <InterestPoint 
+        lat={point[0]}
+        lng={point[1]}
+      />
+    )
+  }
   close() {
+    //const currentPoint= this.state.currentPoint;
     this.setState({
+      //points: this.state.points.push([currentPoint[0], currentPoint[1]]),
       didMark: false,
       currentPoint: [null, null],
     });
+    console.log("after state set",this.state.points)
   }
   render() {
     return (
@@ -55,12 +66,7 @@ class SimpleMap extends Component {
           zoom={this.props.mapZoom}
         >
           {/*TODO: fikse så denne kjører på launch, funker ikke for arrow function*/}
-          {this.state.points.map(point =>
-            <InterestPoint
-              lat={point[0]}
-              lng={point[1]}
-            />
-          )}
+          {this.renderPoints()}
           { this.state.didMark &&
             <LocationMarker
               lat={this.state.currentPoint[0]}
