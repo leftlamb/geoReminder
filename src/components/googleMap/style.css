@@ -1,7 +1,16 @@
 #container {
-    height: 100%;
-    width: 100%;
+    height: inherit;
+    width: inherit;
     cursor: crosshair;
+    display: flex; 
+    flex-direction: column;
+}
+
+.interestPoint {
+  background-color: greenyellow;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
 }
 
 .test {

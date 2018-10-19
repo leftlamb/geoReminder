@@ -3,10 +3,12 @@ import GoogleMapReact from 'google-map-react';
 import LocationMarker from './../locationMarker';
 import './style.css'
 
-import {getPoints /*addPoints*/} from './../../scripts/firebaseAPI';
+import PopUp from '../popUp';
+
+import {getPoints} from './../../scripts/firebaseAPI';
 
 const AnyReactComponent = () => <div className="test"/>;
-
+const InterestPoint = () => <div className="interestPoint"/>;
 
 class SimpleMap extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class SimpleMap extends Component {
       currentPoint: [null, null],
       didMark: false,
     }
+    this.close=this.close.bind(this);
   };
   componentWillMount() {
     let firePoints = getPoints()
@@ -29,13 +32,14 @@ class SimpleMap extends Component {
       didMark: true,
       currentPoint: [event.lat, event.lng],
     });
-    //addPoints(event.lat, event.lng);
+  }
+  close() {
+    this.setState({
+      didMark: false,
+      currentPoint: [null, null],
+    });
   }
   render() {
-    console.log(this.state)
-    for(let i in this.state.points) {
-      console.log(i)
-    }
     return (
       // Important! Always set the container height explicitly
       <div id="container" style={{ height: '100%', width: '100%' }}>
@@ -44,15 +48,19 @@ class SimpleMap extends Component {
         className="buttons">
           Find Location
         </button>
-        {this.state.points.map(point =>
-            console.log(point)
-          )}
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg" }}
           onClick={this._onClick}
           center={this.props.geoLocation}
           zoom={this.props.mapZoom}
         >
+          {/*TODO: fikse så denne kjører på launch, funker ikke for arrow function*/}
+          {this.state.points.map(point =>
+            <InterestPoint
+              lat={point[0]}
+              lng={point[1]}
+            />
+          )}
           { this.state.didMark &&
             <LocationMarker
               lat={this.state.currentPoint[0]}
@@ -64,6 +72,7 @@ class SimpleMap extends Component {
             lng={this.props.geoLocation.lng}
           />
         </GoogleMapReact>
+        {this.state.didMark?<PopUp points={this.state.currentPoint} close={this.close}/>:null}
       </div>
     );
   }

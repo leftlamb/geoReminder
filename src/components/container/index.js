@@ -42,8 +42,6 @@ componentDidMount(){
                 mapZoom = {this.state.zoom}
                 // onMarkerClick = {this.getGeoLocation}
               />
-              <PopUp/>
-
             </div>
           </div>
       );
