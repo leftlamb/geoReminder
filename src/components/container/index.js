@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import './style.css';
 import SimpleMap from '../googleMap';
-import PopUp from '../popUp';
+import {setLastPoint, getLastPoint} from './../../scripts/localStorage'
 
 class Container extends Component {
   constructor(){
     super();
+    let lastCenter = getLastPoint(localStorage);
     this.state = {
       center: {
-        lat: 63.431109,
-        lng: 10.399554
+        lat: lastCenter[0],
+        lng: lastCenter[1]
       },
       zoom: 15
     };
   }
-componentDidMount(){
-  this.getGeoLocation();
-}
-
+  componentDidMount(){
+    this.getGeoLocation();
+  }
   getGeoLocation = () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -28,18 +28,22 @@ componentDidMount(){
             },
             zoom: 16
           });
+          setLastPoint(localStorage, [position.coords.latitude, position.coords.longitude])
+          //SimpleMap.center = {lat: position.coords.latitude, lng: position.coords.longitude} : TODO set center after localStorage set
         })
-  }else{
+    }else{
       console.log("error");
-        }
+    }
   }
   render() {
+    console.log(this.state.center)
       return (
           <div className="container">
             <div className="mapContainer">
               <SimpleMap
                 geoLocation= {this.state.center}
                 mapZoom = {this.state.zoom}
+                center = {this.state.center}
                 // onMarkerClick = {this.getGeoLocation}
               />
             </div>

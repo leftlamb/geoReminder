@@ -4,7 +4,7 @@ import LocationMarker from './../locationMarker';
 import './style.css'
 
 import PopUp from '../popUp';
-
+//import SearchBox from './searchBox';
 import {getPoints} from './../../scripts/firebaseAPI';
 
 const AnyReactComponent = () => <div className="test"/>;
@@ -50,6 +50,9 @@ class SimpleMap extends Component {
     });
     console.log("after state set",this.state.points)
   }
+  searchField() {
+    console.log("jada")
+  }
   render() {
     return (
       // Important! Always set the container height explicitly
@@ -65,6 +68,9 @@ class SimpleMap extends Component {
           center={this.props.geoLocation}
           zoom={this.props.mapZoom}
         >
+          {/*<SearchBox
+            onPlacesChanged={this.searchField}
+          />*/}
           {/*TODO: fikse så denne kjører på launch, funker ikke for arrow function*/}
           {this.renderPoints()}
           { this.state.didMark &&

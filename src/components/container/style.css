@@ -8,3 +8,18 @@
     height: 80vh;
     width: 70vw;
 }
+
+@media screen and (max-width: 400px) {
+    .mapContainer {
+        width: 100vw;
+    }
+}
+
+@media screen and (max-height: 820px) {
+    .mapContainer {
+        height: 90vh;
+    }
+    .container {
+        height: 90vh;
+    }
+}
