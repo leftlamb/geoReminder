@@ -6,18 +6,27 @@ import {setLastPoint, getLastPoint} from './../../scripts/localStorage'
 class Container extends Component {
   constructor(){
     super();
-    let lastCenter = getLastPoint(localStorage);
+    //let lastCenter = this.findCenter();
     this.state = {
       center: {
-        lat: lastCenter[0],
-        lng: lastCenter[1]
+        lat: null,
+        lng: null
       },
       zoom: 15
     };
   }
-  componentDidMount(){
+  componentDidMount() {
+    this.findCenter();
+  }
+  
+  findCenter() {
+    if(getLastPoint(localStorage) != null) {
+      this.getGeoLocation();
+      return getLastPoint(localStorage);
+    }
     this.getGeoLocation();
   }
+
   getGeoLocation = () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -32,11 +41,10 @@ class Container extends Component {
           //SimpleMap.center = {lat: position.coords.latitude, lng: position.coords.longitude} : TODO set center after localStorage set
         })
     }else{
-      console.log("error");
+      console.log("No internett or an error equired. We dont know...");
     }
   }
   render() {
-    console.log(this.state.center)
       return (
           <div className="container">
             <div className="mapContainer">

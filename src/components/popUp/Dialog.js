@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './style.css'
-import {addPoints} from './../../scripts/firebaseAPI';
 
 class Dialog extends Component {
     constructor(props) {

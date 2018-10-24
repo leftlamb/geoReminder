@@ -7,4 +7,8 @@ function getLastPoint(localStorage) {
     return JSON.parse(localStorage.getItem('lastPoint'))
 }
 
+function getSavedPoints(localStorage) {
+    
+}
+
 export {setLastPoint, getLastPoint}

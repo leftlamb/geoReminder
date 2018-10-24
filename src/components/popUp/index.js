@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.css'
 import Dialog from './Dialog';
 
-const SuccessPrompt = () => <div className="prompt" style={{backgroundColor:"green"}}>Success!</div>
+//const SuccessPrompt = () => <div className="prompt" style={{backgroundColor:"green"}}>Success!</div>
 
 class PopUp extends Component {
   constructor(props) {
