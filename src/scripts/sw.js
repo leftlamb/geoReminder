@@ -3,6 +3,8 @@ var shellCache = 'shell';
 
 var shellFiles = [
     '/',
+    'index.html',
+
 ]
 
 window.self.addEventListener('install', function(event) {
@@ -26,7 +28,6 @@ window.self.addEventListener('fetch', function(event) {
             return response;
           }
           return fetch(event.request);
-        }
-      )
+        })
     );
 });

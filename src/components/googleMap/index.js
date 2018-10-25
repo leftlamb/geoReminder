@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import LocationMarker from './../locationMarker';
 import './style.css'
+import {getSavedPoints, savePoints} from './../../scripts/localStorage';
 
 import PopUp from '../popUp';
 //import SearchBox from './searchBox';
@@ -21,7 +22,10 @@ class SimpleMap extends Component {
     this.close=this.close.bind(this);
   };
   componentWillMount() {
-    let firePoints = getPoints()
+    let firePoints = getPoints();
+    if(getSavedPoints.length != firePoints.length) {
+      savePoints(localStorage, firePoints)
+    }
     this.setState({
       points: firePoints,
     });
