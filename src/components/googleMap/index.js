@@ -6,7 +6,7 @@ import {getSavedPoints} from './../../scripts/localStorage';
 
 import PopUp from '../popUp';
 //import SearchBox from './searchBox';
-import {getPoints} from './../../scripts/firebaseAPI';
+//import {getPoints} from './../../scripts/firebaseAPI';
 
 const AnyReactComponent = () => <div className="test"/>;
 const InterestPoint = () => <div className="interestPoint"/>;
@@ -22,13 +22,9 @@ class SimpleMap extends Component {
     this.close=this.close.bind(this);
   };
   componentWillMount() {
-    let firePoints = getPoints();
-    /*if(getSavedPoints.length !== firePoints.length) {
-      savePoints(localStorage, firePoints)
-    }
-    */
+    let localPoints = getSavedPoints(localStorage);
     this.setState({
-      points: firePoints,
+      points: localPoints,
     });
   }
   _onClick = (event) => {
@@ -39,7 +35,6 @@ class SimpleMap extends Component {
     });
   }
   renderPoints() {
-    console.log("rendering points")
     let localPoints = getSavedPoints(localStorage);
     if(localPoints != null) {
       return Object.entries(localPoints).map(point =>
@@ -49,21 +44,17 @@ class SimpleMap extends Component {
         />
       )
     } else {
-      console.log("you have no points");
+      console.log("You have no points");
     }
   }
   close() {
-    //const currentPoint= this.state.currentPoint;
     this.setState({
-      //points: this.state.points.push([currentPoint[0], currentPoint[1]]),
       didMark: false,
       currentPoint: [null, null],
     });
-    //console.log("after state set",this.state.points)
   }
   render() {
     return (
-      // Important! Always set the container height explicitly
       <div id="container" style={{ height: '100%', width: '100%' }}>
         <button
           onClick={this.props.onMarkerClick}

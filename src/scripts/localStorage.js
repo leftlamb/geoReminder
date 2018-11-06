@@ -28,16 +28,8 @@ function addPoint(localstorage, point, message) {
     console.log(localstorage);
 }
 
-function savePoints(localStorage, points) {
-    console.log("points", points.entries())
-    let lastPoints = JSON.stringify(points)
-    //console.log(lastPoints);
-    //console.log("saving", points, JSON.stringify(points))
-    localStorage.setItem('points', JSON.stringify(points));
-}
-
 function getSavedPoints(localStorage) {
     return JSON.parse(localStorage.getItem("points"));
 }
 
-export {setLastPoint, getLastPoint, addPoint, getSavedPoints, savePoints}
+export {setLastPoint, getLastPoint, addPoint, getSavedPoints}
