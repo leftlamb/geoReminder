@@ -1,13 +1,13 @@
-var dataCacheName = 'pointsData';
 var shellCache = 'shell';
-
 var shellFiles = [
     '/',
     'index.html',
-
+    'static/css',
+    'icoc.png'
 ]
 
-window.self.addEventListener('install', function(event) {
+// eslint-disable-next-line no-restricted-globals
+self.addEventListener('install', function(event) {
     // Perform install steps
     event.waitUntil(
       caches.open(shellCache)
@@ -18,8 +18,8 @@ window.self.addEventListener('install', function(event) {
     );
 });
 
-
-window.self.addEventListener('fetch', function(event) {
+// eslint-disable-next-line no-restricted-globals
+self.addEventListener('fetch', function(event) {
     event.respondWith(
       caches.match(event.request)
         .then(function(response) {

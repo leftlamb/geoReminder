@@ -15,3 +15,5 @@ Google maps api is from [here](https://github.com/google-map-react/google-map-re
 ## Deploy
 
 The site is deployed [here](https://georeminder-1539180193727.firebaseapp.com/)
+
+On build deployment remove '''process.env.NODE_ENV === 'production'''

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import LocationMarker from './../locationMarker';
 import './style.css'
-import {getSavedPoints, savePoints} from './../../scripts/localStorage';
+import {getSavedPoints} from './../../scripts/localStorage';
 
 import PopUp from '../popUp';
 //import SearchBox from './searchBox';
@@ -23,27 +23,34 @@ class SimpleMap extends Component {
   };
   componentWillMount() {
     let firePoints = getPoints();
-    if(getSavedPoints.length != firePoints.length) {
+    /*if(getSavedPoints.length !== firePoints.length) {
       savePoints(localStorage, firePoints)
     }
+    */
     this.setState({
       points: firePoints,
     });
   }
   _onClick = (event) => {
-    console.log(event.lat, event.lng, "Hadde det ikke vært litt slitsomt om alle punktene ble lagt til hver gang du trykket?")
+    //console.log(event.lat, event.lng, "Hadde det ikke vært litt slitsomt om alle punktene ble lagt til hver gang du trykket?")
     this.setState({
       didMark: true,
       currentPoint: [event.lat, event.lng],
     });
   }
   renderPoints() {
-    return this.state.points.map(point =>
-      <InterestPoint 
-        lat={point[0]}
-        lng={point[1]}
-      />
-    )
+    console.log("rendering points")
+    let localPoints = getSavedPoints(localStorage);
+    if(localPoints != null) {
+      return Object.entries(localPoints).map(point =>
+        <InterestPoint key={point[1].point[0]} 
+          lat={point[1].point[0][0]}
+          lng={point[1].point[0][1]}
+        />
+      )
+    } else {
+      console.log("you have no points");
+    }
   }
   close() {
     //const currentPoint= this.state.currentPoint;
@@ -52,10 +59,7 @@ class SimpleMap extends Component {
       didMark: false,
       currentPoint: [null, null],
     });
-    console.log("after state set",this.state.points)
-  }
-  searchField() {
-    console.log("jada")
+    //console.log("after state set",this.state.points)
   }
   render() {
     return (
@@ -71,11 +75,7 @@ class SimpleMap extends Component {
           onClick={this._onClick}
           center={this.props.geoLocation}
           zoom={this.props.mapZoom}
-        >
-          {/*<SearchBox
-            onPlacesChanged={this.searchField}
-          />*/}
-          {/*TODO: fikse så denne kjører på launch, funker ikke for arrow function*/}
+          >
           {this.renderPoints()}
           { this.state.didMark &&
             <LocationMarker
