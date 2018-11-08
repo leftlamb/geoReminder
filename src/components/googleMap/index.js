@@ -109,7 +109,6 @@ class SimpleMap extends Component {
             lng={this.props.geoLocation.lng}
           />
         </GoogleMapReact>
-          {"https://maps.googleapis.com/maps/api/staticmap?center=51.477222,0&zoom=14&size=400x400&key=AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg"}
         {this.state.didMark?<PopUp points={this.state.currentPoint} close={this.close}/>:null}
       </div>
     );
