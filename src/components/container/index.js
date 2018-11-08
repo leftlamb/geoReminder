@@ -54,6 +54,9 @@ class Container extends Component {
                 center = {this.state.center}
               />
             </div>
+            <div className="infoContainer">
+
+            </div>
           </div>
       );
   }
