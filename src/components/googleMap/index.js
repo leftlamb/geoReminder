@@ -34,6 +34,7 @@ class SimpleMap extends Component {
       didMark: true,
       currentPoint: [event.lat, event.lng],
     });
+    this.geocodeTest(event.lat, event.lng);
   }
   renderPoints() {
     let localPoints = getSavedPoints(localStorage);
@@ -54,6 +55,37 @@ class SimpleMap extends Component {
       currentPoint: [null, null],
     });
   }
+  geocodeTest(lat, lng) {
+    console.log(lat, lng)
+    var geocoder = window.google.maps.Geocoder;
+    var map = window.google.maps.Map;
+    //var infowindow = window.google.maps.InfoWindow;
+    var latlng = {lat: parseFloat(lat), lng: parseFloat(lng)};
+    geocoder({'location': latlng}, function(results, status) {
+      if (status === 'OK') {
+        console.log("ok")
+        if (results[0]) {
+          map.setZoom(11);
+          var marker = new window.google.maps.Marker({
+            position: latlng,
+            map: map
+          });
+          console.log(results, results[0], results[0].formatted_address)
+          //infowindow.setContent(results[0].formatted_address);
+          //infowindow.open(map, marker);
+        } else {
+          console.log("no results found")
+        }
+      } else {
+        console.log('Geocoder failed due to: ' + status)
+      }
+    });
+  }
+  /*
+  initGeocoder = ({maps}) => {
+    const Geocoder = new maps.Geocoder();
+  }
+  */
   render() {
     return (
       <div id="container" style={{ height: '100%', width: '100%' }}>
@@ -63,6 +95,7 @@ class SimpleMap extends Component {
           center={this.props.geoLocation}
           zoom={this.props.mapZoom}
           options={mapOptions}
+          //onGoogleApiLoaded={this.initGeocoder}
         >
           {this.renderPoints()}
           { this.state.didMark &&
@@ -76,6 +109,7 @@ class SimpleMap extends Component {
             lng={this.props.geoLocation.lng}
           />
         </GoogleMapReact>
+          {"https://maps.googleapis.com/maps/api/staticmap?center=51.477222,0&zoom=14&size=400x400&key=AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg"}
         {this.state.didMark?<PopUp points={this.state.currentPoint} close={this.close}/>:null}
       </div>
     );
