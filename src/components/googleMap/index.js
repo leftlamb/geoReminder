@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import LocationMarker from './../locationMarker';
 import './style.css'
 import {getSavedPoints} from './../../scripts/localStorage';
+import {mapStyle} from './mapStyle';
 
 import PopUp from '../popUp';
 //import SearchBox from './searchBox';
@@ -56,17 +57,13 @@ class SimpleMap extends Component {
   render() {
     return (
       <div id="container" style={{ height: '100%', width: '100%' }}>
-        <button
-          onClick={this.props.onMarkerClick}
-        className="buttons">
-          Find Location
-        </button>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg" }}
+          bootstrapURLKeys={{ key: "AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg"}}
           onClick={this._onClick}
           center={this.props.geoLocation}
           zoom={this.props.mapZoom}
-          >
+          options={mapOptions}
+        >
           {this.renderPoints()}
           { this.state.didMark &&
             <LocationMarker
@@ -83,6 +80,10 @@ class SimpleMap extends Component {
       </div>
     );
   }
+}
+
+const mapOptions = {
+  styles: mapStyle
 }
 
 export default SimpleMap;

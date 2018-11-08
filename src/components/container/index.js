@@ -52,7 +52,6 @@ class Container extends Component {
                 geoLocation= {this.state.center}
                 mapZoom = {this.state.zoom}
                 center = {this.state.center}
-                // onMarkerClick = {this.getGeoLocation}
               />
             </div>
           </div>

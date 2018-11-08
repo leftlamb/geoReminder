@@ -1,5 +1,4 @@
 .container {
-    height: 200vh;
     display: flex;
     justify-content: center;
 }
@@ -11,13 +10,13 @@
 
 @media screen and (max-width: 400px) {
     .mapContainer {
-        width: 100vw;
+        width: 100%;
     }
 }
 
 @media screen and (max-height: 820px) {
     .mapContainer {
-        height: 90vh;
+        height: 100%;
     }
     .container {
         height: 90vh;
