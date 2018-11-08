@@ -1,24 +1,24 @@
 .container {
     display: flex;
     justify-content: center;
+    height: 100vh;
 }
 
 .mapContainer {
-    height: 80vh;
-    width: 70vw;
+    flex: 2;
+}
+.infoContainer {
+    flex: 1;
 }
 
 @media screen and (max-width: 400px) {
     .mapContainer {
         width: 100%;
     }
+    .infoContainer {
+        flex: 0;
+    }
 }
 
 @media screen and (max-height: 820px) {
-    .mapContainer {
-        height: 100%;
-    }
-    .container {
-        height: 90vh;
-    }
 }

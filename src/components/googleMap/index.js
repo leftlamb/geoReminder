@@ -88,7 +88,7 @@ class SimpleMap extends Component {
   */
   render() {
     return (
-      <div id="container" style={{ height: '100%', width: '100%' }}>
+      <div className="googleMapContainer" style={{ height: '100%', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg"}}
           onClick={this._onClick}
