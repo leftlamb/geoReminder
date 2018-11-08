@@ -3,6 +3,8 @@ import './style.css';
 import SimpleMap from '../googleMap';
 import {setLastPoint, getLastPoint} from './../../scripts/localStorage'
 
+import InfoContainer from '../infoContainer';
+
 class Container extends Component {
   constructor(){
     super();
@@ -54,9 +56,7 @@ class Container extends Component {
                 center = {this.state.center}
               />
             </div>
-            <div className="infoContainer">
-
-            </div>
+            <InfoContainer/>
           </div>
       );
   }

@@ -7,11 +7,11 @@
 .mapContainer {
     flex: 2;
 }
-.infoContainer {
-    flex: 1;
-}
 
 @media screen and (max-width: 400px) {
+    .container {
+        height: 86.8vh;
+    }
     .mapContainer {
         width: 100%;
     }

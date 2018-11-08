@@ -1,0 +1,38 @@
+.infoContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    align-items: center;
+}
+
+.listItem {
+    padding: 10px;
+    flex: .8;
+    max-height: 100px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: .5s;
+}
+.liHeader {
+    font-size: 1.3em;
+    margin-bottom: 10px; 
+}
+.liContent {
+
+}
+.listItem:hover {
+    flex: 1;
+
+}
+
+@media screen and (max-width: 400px) {
+    .infoContainer {
+        flex: 0;
+    }
+}
+
+@media screen and (max-height: 820px) {
+}
