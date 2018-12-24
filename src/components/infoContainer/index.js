@@ -17,10 +17,10 @@ class InfoContainer extends Component {
         } else {
           console.log("You have no points");
         }
-      }
+    }
     render() {
         return (
-            <div className="infoContainer" style={{ height: '100%', width: '100%' }}>
+            <div className="infoContainer">
                 {this.renderPoints()}
             </div>
         );

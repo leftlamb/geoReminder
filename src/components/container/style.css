@@ -9,14 +9,8 @@
 }
 
 @media screen and (max-width: 400px) {
-    .container {
-        height: 86.8vh;
-    }
     .mapContainer {
         width: 100%;
-    }
-    .infoContainer {
-        flex: 0;
     }
 }
 

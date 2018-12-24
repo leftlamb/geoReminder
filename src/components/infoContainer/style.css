@@ -23,14 +23,15 @@
 .liContent {
 
 }
+
 .listItem:hover {
     flex: 1;
-
 }
 
 @media screen and (max-width: 400px) {
     .infoContainer {
         flex: 0;
+        display: none;
     }
 }
 
