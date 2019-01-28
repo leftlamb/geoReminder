@@ -1,24 +1,31 @@
+:root {
+    --main-bg-color: rgba(44,62,80 ,1);
+    --content-fill-color: rgba(52,73,94 ,1); 
+}
+
 .container {
     display: flex;
     justify-content: center;
     height: 100vh;
+    background-color: var(--main-bg-color)
 }
 
 .mapContainer {
     flex: 2;
-}
-.infoContainer {
-    flex: 1;
 }
 
 @media screen and (max-width: 400px) {
     .mapContainer {
         width: 100%;
     }
-    .infoContainer {
-        flex: 0;
-    }
 }
 
 @media screen and (max-height: 820px) {
+
 }
+
+/*
+colors:
+    midnight-blue: rgba(44,62,80 ,1)
+    wet-asphalt: rgba(52,73,94 ,1)
+*/

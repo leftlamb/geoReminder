@@ -1,0 +1,76 @@
+:root {
+    --main-bg-color: rgba(44,62,80 ,1);
+    --content-fill-color: rgba(52,73,94 ,1); 
+}
+
+.infoContainer {
+    flex: 1;
+}
+
+.menuBar {
+    color: #fff;
+    width: 100%;
+    display: flex;
+    height: 50px;
+    box-shadow: 1px 1px 5px #000;
+    margin-bottom: 20px;
+}
+
+.menuItem {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.menuItem:hover {
+    background-color: var(--content-fill-color);
+}
+
+.pointContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listItem {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 10px;
+    flex: .8;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    max-height: 100px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: .5s;
+    background-color: var(--content-fill-color);
+    color: #fff;
+}
+.liHeader {
+    font-size: 1.3em;
+    margin-bottom: 10px; 
+}
+.liContent {
+
+}
+
+.listItem:hover {
+    flex: 1;
+    background-color: #ddd;
+    color: #000;
+}
+
+@media screen and (max-width: 400px) {
+    .infoContainer {
+        flex: 0;
+        display: none;
+    }
+}
+
+@media screen and (max-height: 820px) {
+}
