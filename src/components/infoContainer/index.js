@@ -21,13 +21,12 @@ class InfoContainer extends Component {
     render() {
         return (
             <div className="infoContainer">
-                <div className="pointContainer">{this.renderPoints()}</div>
                 <div className="menuBar">
                     <div className="menuItem">Home</div>
-                    <div className="menuItem">Personal</div>
                     <div className="menuItem">Points</div>
-                    <div className="menuItem">Something</div>
+                    <div className="menuItem">Personal</div>
                 </div>
+                <div className="pointContainer">{this.renderPoints()}</div>
             </div>
         );
     }
