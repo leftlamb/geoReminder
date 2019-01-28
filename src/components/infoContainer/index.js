@@ -15,13 +15,19 @@ class InfoContainer extends Component {
             />
           )
         } else {
-          console.log("You have no points");
+            return <div className="listItem">You have no points</div>
         }
     }
     render() {
         return (
             <div className="infoContainer">
-                {this.renderPoints()}
+                <div className="pointContainer">{this.renderPoints()}</div>
+                <div className="menuBar">
+                    <div className="menuItem">Home</div>
+                    <div className="menuItem">Personal</div>
+                    <div className="menuItem">Points</div>
+                    <div className="menuItem">Something</div>
+                </div>
             </div>
         );
     }
