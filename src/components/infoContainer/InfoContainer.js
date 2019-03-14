@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import './style.css'
-import {getSavedPoints} from './../../scripts/localStorage';
+import {getSavedPoints} from '../../scripts/localStorage';
 
-import ListItem from './listItem';
+import InterestPoint from './InterestPoint';
 
 class InfoContainer extends Component {
     renderPoints() {
         let localPoints = getSavedPoints(localStorage);
         if(localPoints != null) {
           return Object.entries(localPoints).map(point =>
-            <ListItem key={point[1].point[0]}
-                header={point[1].point[0][0]+ ", " +point[1].point[0][1]}
+            <InterestPoint key={point[1].point[0]}
+                lat={point[1].point[0][0]}
+                lng={point[1].point[0][1]}
                 content={point[1].message}
             />
-          )
+          ) 
         } else {
             return <div className="listItem">You have no points</div>
         }
