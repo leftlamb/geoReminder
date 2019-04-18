@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import './style.css'
 import {getSavedPoints} from '../../scripts/localStorage';
-
-//import InterestPoint from './InterestPoint';
-
-//import StaticMap from '../GoogleMap/StaticMap';
 import GoogleApiComponent from '../GoogleApiComponent'
 
 class InfoContainer extends Component {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.css';
 import {setLastPoint, getLastPoint} from '../../scripts/localStorage'
 
-import InfoContainer from '../InfoContainer';
+import InfoContainer from '../infoContainer';
 
 class Container extends Component {
   constructor(){
