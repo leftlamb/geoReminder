@@ -1,0 +1,17 @@
+.staticMapContainer {
+    width: 80vw;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: var(--content-fill-color);
+    cursor: pointer;
+}
+
+.staticMapContainer img {
+    border-radius: 10px;
+}
+
+.staticMapContainer div {
+    color: #fff;
+
+}

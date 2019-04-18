@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './style.css';
-import SimpleMap from '../googleMap';
-import {setLastPoint, getLastPoint} from './../../scripts/localStorage'
+import {setLastPoint, getLastPoint} from '../../scripts/localStorage'
 
-import InfoContainer from '../infoContainer';
+import InfoContainer from '../InfoContainer';
 
 class Container extends Component {
   constructor(){
@@ -58,13 +57,6 @@ class Container extends Component {
   render() {
       return (
           <div className="container" style={this.isOnSafari()?style:null}>
-            <div className="mapContainer">
-              <SimpleMap
-                geoLocation= {this.state.center}
-                mapZoom = {this.state.zoom}
-                center = {this.state.center}
-              />
-            </div>
             <InfoContainer/>
           </div>
       );
@@ -72,7 +64,7 @@ class Container extends Component {
 }
 
 const style = {
-  height: "86.8vh"
+  //height: "86.8vh"
 };
 
 export default Container;

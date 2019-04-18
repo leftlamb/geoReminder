@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import LocationMarker from './../locationMarker';
+import LocationMarker from '../LocationMarker';
 import './style.css'
-import {getSavedPoints} from './../../scripts/localStorage';
+import {getSavedPoints} from '../../scripts/localStorage';
 import {mapStyle} from './mapStyle';
 
-import PopUp from '../popUp';
+import PopUp from '../PopUp';
 //import SearchBox from './searchBox';
 //import {getPoints} from './../../scripts/firebaseAPI';
 
@@ -66,10 +66,11 @@ class SimpleMap extends Component {
         console.log("ok")
         if (results[0]) {
           map.setZoom(11);
-          var marker = new window.google.maps.Marker({
+          /*var marker = new window.google.maps.Marker({
             position: latlng,
             map: map
           });
+          */
           console.log(results, results[0], results[0].formatted_address)
           //infowindow.setContent(results[0].formatted_address);
           //infowindow.open(map, marker);
@@ -88,7 +89,7 @@ class SimpleMap extends Component {
   */
   render() {
     return (
-      <div className="googleMapContainer" style={{ height: '100%', width: '100%' }}>
+      <div className="googleMapContainer" >
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg"}}
           onClick={this._onClick}
