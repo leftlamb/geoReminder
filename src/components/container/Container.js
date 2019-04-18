@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './style.css';
-import SimpleMap from '../googleMap';
-import {setLastPoint, getLastPoint} from './../../scripts/localStorage'
+import {setLastPoint, getLastPoint} from '../../scripts/localStorage'
+
+import InfoContainer from '../infoContainer';
 
 class Container extends Component {
   constructor(){
@@ -44,19 +45,26 @@ class Container extends Component {
       console.log("No internett or an error equired. We dont know...");
     }
   }
+  isOnSafari() { //check if site is run on an iPhone and using safari browser
+    console.log(window.navigator.userAgent)
+    if(window.navigator.userAgent.match(/iPhone/i) && 
+    window.navigator.userAgent.match(/WebKit/i) && 
+    window.navigator.userAgent.match(/Safari/i)) {
+      console.log("isOnSafari")
+      return true;
+    }
+  }
   render() {
       return (
-          <div className="container">
-            <div className="mapContainer">
-              <SimpleMap
-                geoLocation= {this.state.center}
-                mapZoom = {this.state.zoom}
-                center = {this.state.center}
-              />
-            </div>
+          <div className="container" style={this.isOnSafari()?style:null}>
+            <InfoContainer/>
           </div>
       );
   }
 }
+
+const style = {
+  //height: "86.8vh"
+};
 
 export default Container;

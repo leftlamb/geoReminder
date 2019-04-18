@@ -1,11 +1,17 @@
+:root {
+    --main-bg-color: rgba(44,62,80 ,1);
+    --content-fill-color: rgba(52,73,94 ,1); 
+}
+
 .container {
     display: flex;
     justify-content: center;
+    min-height: 100vh;
+    background-color: var(--main-bg-color)
 }
 
 .mapContainer {
-    height: 80vh;
-    width: 70vw;
+    flex: 2;
 }
 
 @media screen and (max-width: 400px) {
@@ -15,10 +21,11 @@
 }
 
 @media screen and (max-height: 820px) {
-    .mapContainer {
-        height: 100%;
-    }
-    .container {
-        height: 90vh;
-    }
+
 }
+
+/*
+colors:
+    midnight-blue: rgba(44,62,80 ,1)
+    wet-asphalt: rgba(52,73,94 ,1)
+*/

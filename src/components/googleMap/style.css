@@ -1,9 +1,7 @@
-#container {
-    height: inherit;
-    width: inherit;
-    cursor: crosshair;
-    display: flex; 
-    flex-direction: column;
+.googleMapContainer {
+  display: flex;
+  justify-content: center;
+  height: 100%;
 }
 
 .interestPoint {
