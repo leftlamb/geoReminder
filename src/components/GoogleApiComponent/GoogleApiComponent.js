@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './style.css';
 
 class GoogleApiComponent extends Component {
-  componentDidMount() {
-    console.log(this.props.message)
-  }
   render() {
     return (
       <div className='staticMapContainer noselect'>
