@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import './style.css'
 import {getSavedPoints} from '../../scripts/localStorage';
 import GoogleApiComponent from '../GoogleApiComponent'
+import {createDummyData} from '../../scripts/dummyAPI';
 
 class InfoContainer extends Component {
+    componentDidMount() {
+        createDummyData(window.localStorage);
+    }
     renderPoints() {
         let localPoints = getSavedPoints(localStorage);
         if(localPoints != null) {

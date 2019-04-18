@@ -25,7 +25,6 @@ function addPoint(localstorage, point, message) {
             })
         localstorage.setItem('points', JSON.stringify(data));
     }
-    console.log(localstorage);
 }
 
 function getSavedPoints(localStorage) {
