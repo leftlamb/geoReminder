@@ -5,6 +5,7 @@
 
 .infoContainer {
     flex: 1;
+    margin-bottom: 10px;
 }
 
 .menuBar {
@@ -47,16 +48,13 @@
     flex-direction: column;
     border: 1px solid black;
     border-radius: 10px;
-    transition: .5s;
+    transition: .3s;
     background-color: var(--content-fill-color);
     color: #fff;
 }
 .liHeader {
     font-size: 1.3em;
     margin-bottom: 10px; 
-}
-.liContent {
-
 }
 
 .itemMap {
@@ -65,6 +63,32 @@
 }
 
 .listItem:hover {
+    flex: 1;
+    background-color: #ddd;
+    color: #000;
+}
+.addItem {
+    color: #fff;
+    background-color: var(--content-fill-color);
+    cursor: pointer;
+    font-size: 2em;
+    border-radius: 20px;
+    border: 1px solid black;
+    height: 50px;
+    width: 3em;
+    text-align: center;
+    transition: .3s;
+}
+.noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none; 
+       -khtml-user-select: none; 
+         -moz-user-select: none; 
+          -ms-user-select: none; 
+              user-select: none;
+}
+
+.addItem:hover {
     flex: 1;
     background-color: #ddd;
     color: #000;
