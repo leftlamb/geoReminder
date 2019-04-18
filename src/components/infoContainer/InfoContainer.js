@@ -21,6 +21,10 @@ class InfoContainer extends Component {
     render() {
         return (
             <div className="infoContainer">
+                <div id="addDialog">
+                    Do you want to add the application to your homescreen?
+                    <button>Yes</button>    
+                </div>
                 <div className="menuBar">
                     <div className="menuItem">Home</div>
                     <div className="menuItem">Points</div>
