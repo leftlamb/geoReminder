@@ -16,10 +16,6 @@ class Container extends Component {
       zoom: 15
     };
   }
-  componentDidMount() {
-    this.findCenter();
-  }
-  
   findCenter() {
     if(getLastPoint(localStorage) != null) {
       this.getGeoLocation();
@@ -56,15 +52,11 @@ class Container extends Component {
   }
   render() {
       return (
-          <div className="container" style={this.isOnSafari()?style:null}>
+          <div className="container">
             <InfoContainer/>
           </div>
       );
   }
 }
-
-const style = {
-  //height: "86.8vh"
-};
 
 export default Container;
