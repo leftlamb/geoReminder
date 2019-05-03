@@ -1,0 +1,21 @@
+{
+    "short_name": "geoReminder",
+    "name": "geoReminder",
+    "icons": [
+      {
+        "src": "/public/icon.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/public/icon.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "rgba(44,62,80 ,1)",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "rgba(44,62,80 ,1)"
+  }
