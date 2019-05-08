@@ -3,9 +3,9 @@ import './style.css'
 import { TweenMax, CSSPlugin, AttrPlugin }  from "gsap/all";
 //import GoogleMap from '../GoogleMap'
 
+import GoogleMap from '../GoogleMap';
 const plugins = [ CSSPlugin, AttrPlugin ];
 
-import GoogleMap from '../GoogleMap';
 
 export default class Home extends Component {
   constructor(props) {
