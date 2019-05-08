@@ -14,7 +14,7 @@ class InfoContainer extends Component {
         if(localPoints != null) {
           return Object.entries(localPoints).map(point =>
             <GoogleApiComponent key={point[1].point[0][0]+','+point[1].point[0][1]} position={point[1].point[0][0]+','+point[1].point[0][1]} message={point[1].message}  className="addItem"/>
-          ) 
+          )
         } else {
             return <div className="listItem">You have no points</div>
         }
@@ -24,7 +24,7 @@ class InfoContainer extends Component {
             <div className="infoContainer">
                 <div id="addDialog">
                     Do you want to add the application to your homescreen?
-                    <button>Yes</button>    
+                    <button>Yes</button>
                 </div>
                 <div className="menuBar">
                     <div className="menuItem">Home</div>
@@ -56,10 +56,10 @@ function addEventsToDialog(document) {
         e.preventDefault();
         // Stash the event so it can be triggered later.
         deferredPrompt = e;
-        
+
         addAppDialog.style.display = 'flex';
       });
-      
+
       btnAdd.addEventListener('click', (e) => {
         addAppDialog.style.display = 'none'; // hide our user interface that shows our A2HS button
         deferredPrompt.prompt(); // Show the prompt

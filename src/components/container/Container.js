@@ -3,6 +3,7 @@ import './style.css';
 import {setLastPoint, getLastPoint} from '../../scripts/localStorage'
 
 import InfoContainer from '../infoContainer';
+import Home from '../Home';
 
 class Container extends Component {
   constructor(){
@@ -53,7 +54,7 @@ class Container extends Component {
   render() {
       return (
           <div className="container">
-            <InfoContainer/>
+            <Home/>
           </div>
       );
   }
