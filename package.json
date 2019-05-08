@@ -5,8 +5,10 @@
   "dependencies": {
     "firebase": "^5.5.4",
     "google-map-react": "^1.0.9",
+    "gsap": "^2.1.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-draggable": "^3.3.0",
     "react-google-static-map": "^0.1.0",
     "react-scripts": "2.0.4"
   },
