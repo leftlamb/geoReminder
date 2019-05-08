@@ -5,6 +5,8 @@ import { TweenMax, CSSPlugin, AttrPlugin }  from "gsap/all";
 
 const plugins = [ CSSPlugin, AttrPlugin ];
 
+import GoogleMap from '../GoogleMap';
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +33,7 @@ export default class Home extends Component {
         return (
             <div className="homeContainer">
                 <div className="mapContainer">
+                    <GoogleMap/>
                 </div>
 
                 <div className="swipeMenu smLow">
