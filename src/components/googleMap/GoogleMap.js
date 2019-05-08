@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import LocationMarker from '../LocationMarker';
+//import LocationMarker from '../LocationMarker';
 import './style.css'
 import {getSavedPoints} from '../../scripts/localStorage';
 import {mapStyle} from './mapStyle';
@@ -9,7 +9,7 @@ import PopUp from '../PopUp';
 //import SearchBox from './searchBox';
 //import {getPoints} from './../../scripts/firebaseAPI';
 
-const AnyReactComponent = () => <div className="test"/>;
+//const AnyReactComponent = () => <div className="test"/>;
 const InterestPoint = () => <div className="interestPoint"/>;
 
 class SimpleMap extends Component {
@@ -19,6 +19,10 @@ class SimpleMap extends Component {
       points: null,
       currentPoint: [null, null],
       didMark: false,
+      center: {
+        lat: null,
+        lng: null
+      }
     }
     this.close=this.close.bind(this);
   };
@@ -27,6 +31,7 @@ class SimpleMap extends Component {
     this.setState({
       points: localPoints,
     });
+    this.getGeoLocation();
   }
   _onClick = (event) => {
     //console.log(event.lat, event.lng, "Hadde det ikke vært litt slitsomt om alle punktene ble lagt til hver gang du trykket?")
@@ -87,30 +92,42 @@ class SimpleMap extends Component {
     const Geocoder = new maps.Geocoder();
   }
   */
+ getGeoLocation = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.setState({
+            center: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }
+          });
+          //setLastPoint(localStorage, [position.coords.latitude, position.coords.longitude])
+          //SimpleMap.center = {lat: position.coords.latitude, lng: position.coords.longitude} : TODO set center after localStorage set
+        })
+    }else{
+      console.log("No internett or an error equired. We dont know...");
+    }
+  }
   render() {
     return (
       <div className="googleMapContainer" >
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyDYgPtTHYgLwXEDWPeR2DYt--wHKJcmIWg"}}
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_STATIC_MAPS_API_KEY}}
           onClick={this._onClick}
-          center={this.props.geoLocation}
-          zoom={this.props.mapZoom}
+          center={this.state.center}
+          zoom={16}
           options={mapOptions}
           //onGoogleApiLoaded={this.initGeocoder}
         >
           {this.renderPoints()}
-          { this.state.didMark &&
+          {/*this.state.didMark &&
             <LocationMarker
               lat={this.state.currentPoint[0]}
               lng={this.state.currentPoint[1]}
             />
-          }
-          <AnyReactComponent
-            lat={this.props.geoLocation.lat}
-            lng={this.props.geoLocation.lng}
-          />
+          */}
         </GoogleMapReact>
-        {this.state.didMark?<PopUp points={this.state.currentPoint} close={this.close}/>:null}
+        {/*this.state.didMark?<PopUp points={this.state.currentPoint} close={this.close}/>:null*/}
       </div>
     );
   }
