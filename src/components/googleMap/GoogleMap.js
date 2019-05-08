@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-//import LocationMarker from '../LocationMarker';
 import './style.css'
 import {getSavedPoints} from '../../scripts/localStorage';
 import {mapStyle} from './mapStyle';
 
-import PopUp from '../PopUp';
 //import SearchBox from './searchBox';
-//import {getPoints} from './../../scripts/firebaseAPI';
 
-//const AnyReactComponent = () => <div className="test"/>;
 const InterestPoint = () => <div className="interestPoint"/>;
+const MarkPoint = () => <div className="interestPoint markPoint"/>
 
 class SimpleMap extends Component {
   constructor(props) {
@@ -34,12 +31,10 @@ class SimpleMap extends Component {
     this.getGeoLocation();
   }
   _onClick = (event) => {
-    //console.log(event.lat, event.lng, "Hadde det ikke vært litt slitsomt om alle punktene ble lagt til hver gang du trykket?")
     this.setState({
       didMark: true,
       currentPoint: [event.lat, event.lng],
     });
-    this.geocodeTest(event.lat, event.lng);
   }
   renderPoints() {
     let localPoints = getSavedPoints(localStorage);
@@ -48,8 +43,7 @@ class SimpleMap extends Component {
         <InterestPoint key={point[1].point[0]} 
           lat={point[1].point[0][0]}
           lng={point[1].point[0][1]}
-        />
-      )
+        />)
     } else {
       console.log("You have no points");
     }
@@ -60,38 +54,6 @@ class SimpleMap extends Component {
       currentPoint: [null, null],
     });
   }
-  geocodeTest(lat, lng) {
-    console.log(lat, lng)
-    var geocoder = window.google.maps.Geocoder;
-    var map = window.google.maps.Map;
-    //var infowindow = window.google.maps.InfoWindow;
-    var latlng = {lat: parseFloat(lat), lng: parseFloat(lng)};
-    geocoder({'location': latlng}, function(results, status) {
-      if (status === 'OK') {
-        console.log("ok")
-        if (results[0]) {
-          map.setZoom(11);
-          /*var marker = new window.google.maps.Marker({
-            position: latlng,
-            map: map
-          });
-          */
-          console.log(results, results[0], results[0].formatted_address)
-          //infowindow.setContent(results[0].formatted_address);
-          //infowindow.open(map, marker);
-        } else {
-          console.log("no results found")
-        }
-      } else {
-        console.log('Geocoder failed due to: ' + status)
-      }
-    });
-  }
-  /*
-  initGeocoder = ({maps}) => {
-    const Geocoder = new maps.Geocoder();
-  }
-  */
  getGeoLocation = () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -105,7 +67,7 @@ class SimpleMap extends Component {
           //SimpleMap.center = {lat: position.coords.latitude, lng: position.coords.longitude} : TODO set center after localStorage set
         })
     }else{
-      console.log("No internett or an error equired. We dont know...");
+      console.log("No internett or an error aquired. We dont know...");
     }
   }
   render() {
@@ -117,17 +79,16 @@ class SimpleMap extends Component {
           center={this.state.center}
           zoom={16}
           options={mapOptions}
-          //onGoogleApiLoaded={this.initGeocoder}
         >
           {this.renderPoints()}
-          {/*this.state.didMark &&
-            <LocationMarker
+          {this.state.didMark &&
+            <MarkPoint
+              key={'Interest point'}
               lat={this.state.currentPoint[0]}
               lng={this.state.currentPoint[1]}
             />
-          */}
+          }
         </GoogleMapReact>
-        {/*this.state.didMark?<PopUp points={this.state.currentPoint} close={this.close}/>:null*/}
       </div>
     );
   }
