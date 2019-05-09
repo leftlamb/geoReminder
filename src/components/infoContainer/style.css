@@ -4,8 +4,8 @@
 }
 
 .infoContainer {
+    z-index: -10;
     flex: 1;
-    margin-bottom: 10px;
 }
 
 .menuBar {
