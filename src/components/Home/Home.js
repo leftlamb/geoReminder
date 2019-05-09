@@ -18,20 +18,20 @@ const plugins = [ CSSPlugin, AttrPlugin ];
 
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state={
-      onMap: true
-    }
-    this.isUp = 0;
+    constructor(props) {
+      super(props);
+      this.state={
+        onMap: true
+      }
+      this.isUp = 0;
 
-    // This binding is necessary to make `this` work in the callback
-    this.onPress = this.onPress.bind(this);
-    this.redirectToTarget = this.redirectToTarget.bind(this);
-  }
-  static contextTypes = {
-    router: PropTypes.object
-  }
+      // This binding is necessary to make `this` work in the callback
+      this.onPress = this.onPress.bind(this);
+      this.redirect = this.redirect.bind(this);
+    }
+    static contextTypes = {
+      router: PropTypes.object
+    }
 
     onPress(){
       if (this.isUp === 0) {
@@ -46,14 +46,11 @@ export default class Home extends Component {
       }
     }
 
-    redirectToTarget() {
+    redirect() {
       console.log("ja");
-      //this.context.router.history.push('/infoContainer')
-      /*
       this.setState({
         onMap: !this.state.onMap
       })
-      */
     }
 
     render() {

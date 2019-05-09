@@ -6,12 +6,19 @@
     width: 65px;
     height: 50px;
     border-radius: 50px;
-    background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: 1s;
+}
+.listView {
+    box-shadow: 2px 2px #ddd; 
+}
+.mapView {
+    background-color: #fff;
+    transition: 1s;
 }
 
 .listLine {
@@ -37,21 +44,33 @@
     transition: .5s;
 }
 
-.listButton:hover .listLine:nth-child(1) .line {
+.listView .listLine:nth-child(1) .line {
     animation: listAnimation;
     animation-duration: 2s;
 }
 
-.listButton:hover .listLine:nth-child(2) .line {
+.listView .listLine:nth-child(2) .line {
     animation: listAnimation;
     animation-duration: 2s;
     animation-delay: .3s;
 }
 
-.listButton:hover .listLine:nth-child(3) .line {
+.listView .listLine:nth-child(3) .line {
     animation: listAnimation;
     animation-duration: 2s;
     animation-delay: .15s;
+}
+
+.mapView .listLine:nth-child(1) .line {
+    background-color: #bbf;
+}
+
+.mapView .listLine:nth-child(2) .line {
+    background-color: #bbf;
+}
+
+.mapView .listLine:nth-child(3) .line {
+    background-color: #bbf;
 }
 
 @keyframes listAnimation {

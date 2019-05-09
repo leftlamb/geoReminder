@@ -15,9 +15,22 @@ const ListLine = () => <div className="listLine">
 </div>;
 
 export default class ListButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      onMap: true
+    }
+    // This binding is necessary to make `this` work in the callback
+    this.handleEvent = this.handleEvent.bind(this);
+  }
+  handleEvent() {
+    this.setState({
+      onMap: !this.state.onMap
+    })
+  }
   render() {
     return (
-      <NavLink to="/infoContainer" className="listButton">
+      <NavLink onClick={this.handleEvent} to={this.state.onMap?"/infoContainer":"/"} className={this.state.onMap?"listButton mapView":"listButton listView"}>
         <ListLine/>
         <ListLine/>
         <ListLine/>
