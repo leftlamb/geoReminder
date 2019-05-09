@@ -2,18 +2,35 @@ import React, { Component } from 'react'
 import './style.css'
 import { TweenMax, CSSPlugin, AttrPlugin }  from "gsap/all";
 //import GoogleMap from '../GoogleMap'
+import PropTypes from 'prop-types'
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
 
 import GoogleMap from '../GoogleMap';
+import InfoContainer from '../infoContainer';
+
+import ListButton from '../elements/ListButton';
+
 const plugins = [ CSSPlugin, AttrPlugin ];
 
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      onMap: true
+    }
     this.isUp = 0;
 
     // This binding is necessary to make `this` work in the callback
     this.onPress = this.onPress.bind(this);
+    this.redirectToTarget = this.redirectToTarget.bind(this);
+  }
+  static contextTypes = {
+    router: PropTypes.object
   }
 
     onPress(){
@@ -29,11 +46,26 @@ export default class Home extends Component {
       }
     }
 
+    redirectToTarget() {
+      console.log("ja");
+      //this.context.router.history.push('/infoContainer')
+      /*
+      this.setState({
+        onMap: !this.state.onMap
+      })
+      */
+    }
+
     render() {
         return (
             <div className="homeContainer">
                 <div className="mapContainer">
-                    <GoogleMap/>
+                    <HashRouter>
+                      <ListButton/>
+                      <Route exact path="/" component={GoogleMap}/>
+                      <Route path="/infoContainer" component={InfoContainer}/>
+                    </HashRouter>
+                    {/*this.state.onMap?:<InfoContainer/>*/}
                 </div>
 
                 <div className="swipeMenu smLow">
