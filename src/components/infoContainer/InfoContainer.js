@@ -26,11 +26,6 @@ class InfoContainer extends Component {
                     Do you want to add the application to your homescreen?
                     <button>Yes</button>
                 </div>
-                <div className="menuBar">
-                    <div className="menuItem">Home</div>
-                    <div className="menuItem">Points</div>
-                    <div className="menuItem">Personal</div>
-                </div>
                 <div className="pointContainer">
                     <div>
                         {this.renderPoints()}
