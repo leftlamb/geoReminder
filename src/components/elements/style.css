@@ -12,12 +12,12 @@
     align-items: center;
     cursor: pointer;
     transition: 1s;
+    background-color: #fff;
 }
 .listView {
     box-shadow: 2px 2px #ddd; 
 }
 .mapView {
-    background-color: #fff;
     transition: 1s;
 }
 
